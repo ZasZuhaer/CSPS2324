@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 
 namespace HomePage
 {
@@ -24,7 +26,7 @@ namespace HomePage
             TopPanel.Visible = true;
             SignUpPanel.Visible = true;
             LoginPanel.Visible = false;
-         
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -61,33 +63,9 @@ namespace HomePage
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            if (LoginUsingEmailButton.Text == "Login using Email")
-            {
-                LoginUsingEmailButton.Text = "Login using Username";
-                LoginUsernameLabel.Text = "Email:";
-            }
-            else
-            {
-                LoginUsingEmailButton.Text = "Login using Email";
-                LoginUsernameLabel.Text = "Username:";
-            }
         }
 
         private void LoginPanel_Paint(object sender, PaintEventArgs e)
@@ -101,6 +79,72 @@ namespace HomePage
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string emailPattern = @"^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            string passwordPattern = @"^(?=.*[A-Z])(?=.*\d).+";
+            string phonePattern = @"^\d{11}$";
+
+            if (NameTextBox.Text == "" || NameTextBox.Text.Length < 2 || Regex.IsMatch(NameTextBox.Text, @"\d"))
+            {
+                DataVerificationMsg.Text = "Please enter a valid name";
+            }
+
+            else if(!(Regex.IsMatch(EmailTextBox.Text, emailPattern)))
+            {
+                DataVerificationMsg.Text = "Please enter a valid email";
+            }
+            
+            else if(PasswordTextBox.Text.Length < 8)
+            {
+                DataVerificationMsg.Text = "Password must contain at least 8 characters";
+            }
+
+            else if(!(Regex.IsMatch(PasswordTextBox.Text, passwordPattern)))
+            {
+                DataVerificationMsg.Text = "Please enter a password which contains a capital letter and a number";
+            }
+
+            else if(ReTypePasswordTextBox.Text != PasswordTextBox.Text)
+            {
+                DataVerificationMsg.Text = "Passwords do not match";
+            }
+
+            else if(!Regex.IsMatch(PhoneTextBox.Text, phonePattern))
+            {
+                DataVerificationMsg.Text = "Please enter your 11 digit phone number";
+            }
+
+            else if (!radioButton1.Checked && !radioButton2.Checked)
+            {
+                DataVerificationMsg.Text = "Please choose an account type";
+            }
+
+            else
+            {
+                DataVerificationMsg.Text = "";
+
+            }
+
+            
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
         {
 
         }

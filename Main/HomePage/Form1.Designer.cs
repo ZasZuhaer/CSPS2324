@@ -33,13 +33,13 @@
             this.TopPanel = new System.Windows.Forms.Panel();
             this.BackButton = new System.Windows.Forms.Button();
             this.SignUpPanel = new System.Windows.Forms.Panel();
+            this.DataVerificationMsg = new System.Windows.Forms.Label();
             this.ReTypePasswordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
-            this.UsernameTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.UserTypeGroupRadio = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -47,12 +47,10 @@
             this.PhoneLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
-            this.UsernameLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.LoginUsingEmailButton = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -110,19 +108,18 @@
             // 
             // SignUpPanel
             // 
+            this.SignUpPanel.Controls.Add(this.DataVerificationMsg);
             this.SignUpPanel.Controls.Add(this.ReTypePasswordTextBox);
             this.SignUpPanel.Controls.Add(this.label1);
             this.SignUpPanel.Controls.Add(this.button4);
             this.SignUpPanel.Controls.Add(this.PhoneTextBox);
             this.SignUpPanel.Controls.Add(this.PasswordTextBox);
             this.SignUpPanel.Controls.Add(this.EmailTextBox);
-            this.SignUpPanel.Controls.Add(this.UsernameTextBox);
             this.SignUpPanel.Controls.Add(this.NameTextBox);
             this.SignUpPanel.Controls.Add(this.UserTypeGroupRadio);
             this.SignUpPanel.Controls.Add(this.PhoneLabel);
             this.SignUpPanel.Controls.Add(this.PasswordLabel);
             this.SignUpPanel.Controls.Add(this.EmailLabel);
-            this.SignUpPanel.Controls.Add(this.UsernameLabel);
             this.SignUpPanel.Controls.Add(this.NameLabel);
             this.SignUpPanel.Location = new System.Drawing.Point(0, 55);
             this.SignUpPanel.Name = "SignUpPanel";
@@ -131,18 +128,29 @@
             this.SignUpPanel.Visible = false;
             this.SignUpPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // DataVerificationMsg
+            // 
+            this.DataVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataVerificationMsg.Location = new System.Drawing.Point(9, 238);
+            this.DataVerificationMsg.Name = "DataVerificationMsg";
+            this.DataVerificationMsg.Size = new System.Drawing.Size(370, 46);
+            this.DataVerificationMsg.TabIndex = 14;
+            this.DataVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DataVerificationMsg.Click += new System.EventHandler(this.label2_Click_1);
+            // 
             // ReTypePasswordTextBox
             // 
-            this.ReTypePasswordTextBox.Location = new System.Drawing.Point(160, 207);
+            this.ReTypePasswordTextBox.Location = new System.Drawing.Point(160, 179);
             this.ReTypePasswordTextBox.Name = "ReTypePasswordTextBox";
             this.ReTypePasswordTextBox.Size = new System.Drawing.Size(167, 23);
             this.ReTypePasswordTextBox.TabIndex = 16;
+            this.ReTypePasswordTextBox.UseSystemPasswordChar = true;
             this.ReTypePasswordTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 210);
+            this.label1.Location = new System.Drawing.Point(67, 182);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 15;
@@ -152,40 +160,35 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(150, 293);
+            this.button4.Location = new System.Drawing.Point(150, 291);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(95, 25);
             this.button4.TabIndex = 14;
             this.button4.Text = "Sign Up";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // PhoneTextBox
             // 
-            this.PhoneTextBox.Location = new System.Drawing.Point(160, 235);
+            this.PhoneTextBox.Location = new System.Drawing.Point(160, 207);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(167, 23);
             this.PhoneTextBox.TabIndex = 13;
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Location = new System.Drawing.Point(160, 179);
+            this.PasswordTextBox.Location = new System.Drawing.Point(160, 151);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(167, 23);
             this.PasswordTextBox.TabIndex = 12;
+            this.PasswordTextBox.UseSystemPasswordChar = true;
             // 
             // EmailTextBox
             // 
-            this.EmailTextBox.Location = new System.Drawing.Point(160, 151);
+            this.EmailTextBox.Location = new System.Drawing.Point(160, 123);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(167, 23);
             this.EmailTextBox.TabIndex = 11;
-            // 
-            // UsernameTextBox
-            // 
-            this.UsernameTextBox.Location = new System.Drawing.Point(160, 123);
-            this.UsernameTextBox.Name = "UsernameTextBox";
-            this.UsernameTextBox.Size = new System.Drawing.Size(167, 23);
-            this.UsernameTextBox.TabIndex = 10;
             // 
             // NameTextBox
             // 
@@ -232,7 +235,7 @@
             // PhoneLabel
             // 
             this.PhoneLabel.AutoSize = true;
-            this.PhoneLabel.Location = new System.Drawing.Point(67, 238);
+            this.PhoneLabel.Location = new System.Drawing.Point(67, 210);
             this.PhoneLabel.Name = "PhoneLabel";
             this.PhoneLabel.Size = new System.Drawing.Size(53, 17);
             this.PhoneLabel.TabIndex = 4;
@@ -241,7 +244,7 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(67, 182);
+            this.PasswordLabel.Location = new System.Drawing.Point(67, 154);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(73, 17);
             this.PasswordLabel.TabIndex = 3;
@@ -250,21 +253,11 @@
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(67, 154);
+            this.EmailLabel.Location = new System.Drawing.Point(67, 126);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(47, 17);
             this.EmailLabel.TabIndex = 2;
             this.EmailLabel.Text = "Email:";
-            // 
-            // UsernameLabel
-            // 
-            this.UsernameLabel.AutoSize = true;
-            this.UsernameLabel.Location = new System.Drawing.Point(67, 126);
-            this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(75, 17);
-            this.UsernameLabel.TabIndex = 1;
-            this.UsernameLabel.Text = "Username:";
-            this.UsernameLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // NameLabel
             // 
@@ -280,7 +273,6 @@
             // 
             this.LoginPanel.Controls.Add(this.button3);
             this.LoginPanel.Controls.Add(this.button2);
-            this.LoginPanel.Controls.Add(this.LoginUsingEmailButton);
             this.LoginPanel.Controls.Add(this.textBox4);
             this.LoginPanel.Controls.Add(this.textBox5);
             this.LoginPanel.Controls.Add(this.groupBox1);
@@ -296,33 +288,24 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(152, 213);
+            this.button3.Location = new System.Drawing.Point(152, 214);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(95, 25);
             this.button3.TabIndex = 13;
             this.button3.Text = "Log in";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(217, 178);
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(128, 183);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 25);
+            this.button2.Size = new System.Drawing.Size(141, 25);
             this.button2.TabIndex = 12;
             this.button2.Text = "Forgot Password?";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // LoginUsingEmailButton
-            // 
-            this.LoginUsingEmailButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginUsingEmailButton.Location = new System.Drawing.Point(70, 178);
-            this.LoginUsingEmailButton.Name = "LoginUsingEmailButton";
-            this.LoginUsingEmailButton.Size = new System.Drawing.Size(141, 25);
-            this.LoginUsingEmailButton.TabIndex = 11;
-            this.LoginUsingEmailButton.Text = "Login using Email";
-            this.LoginUsingEmailButton.UseVisualStyleBackColor = true;
-            this.LoginUsingEmailButton.Click += new System.EventHandler(this.button1_Click_2);
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // textBox4
             // 
@@ -386,9 +369,9 @@
             this.LoginUsernameLabel.AutoSize = true;
             this.LoginUsernameLabel.Location = new System.Drawing.Point(67, 98);
             this.LoginUsernameLabel.Name = "LoginUsernameLabel";
-            this.LoginUsernameLabel.Size = new System.Drawing.Size(75, 17);
+            this.LoginUsernameLabel.Size = new System.Drawing.Size(47, 17);
             this.LoginUsernameLabel.TabIndex = 0;
-            this.LoginUsernameLabel.Text = "Username:";
+            this.LoginUsernameLabel.Text = "Email:";
             // 
             // Form1
             // 
@@ -427,7 +410,6 @@
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel SignUpPanel;
         private System.Windows.Forms.Label NameLabel;
-        private System.Windows.Forms.Label UsernameLabel;
         private System.Windows.Forms.Label PhoneLabel;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Label EmailLabel;
@@ -437,7 +419,6 @@
         private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
-        private System.Windows.Forms.TextBox UsernameTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Panel LoginPanel;
         private System.Windows.Forms.TextBox textBox4;
@@ -447,12 +428,12 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label LoginUsernameLabel;
-        private System.Windows.Forms.Button LoginUsingEmailButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox ReTypePasswordTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label DataVerificationMsg;
     }
 }
 
