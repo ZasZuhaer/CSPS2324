@@ -26,14 +26,14 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        internal void InitializeComponent()
         {
             this.SignUpButton = new System.Windows.Forms.Button();
             this.LoginButton = new System.Windows.Forms.Button();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.BackButton = new System.Windows.Forms.Button();
             this.SignUpPanel = new System.Windows.Forms.Panel();
-            this.DataVerificationMsg = new System.Windows.Forms.Label();
+            DataVerificationMsg = new System.Windows.Forms.Label();
             this.ReTypePasswordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
@@ -51,13 +51,14 @@
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.LoginPassword = new System.Windows.Forms.TextBox();
+            this.LoginEmail = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.LoginUsernameLabel = new System.Windows.Forms.Label();
+            this.LoginVerificationMsg = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.SignUpPanel.SuspendLayout();
             this.UserTypeGroupRadio.SuspendLayout();
@@ -108,7 +109,7 @@
             // 
             // SignUpPanel
             // 
-            this.SignUpPanel.Controls.Add(this.DataVerificationMsg);
+            this.SignUpPanel.Controls.Add(DataVerificationMsg);
             this.SignUpPanel.Controls.Add(this.ReTypePasswordTextBox);
             this.SignUpPanel.Controls.Add(this.label1);
             this.SignUpPanel.Controls.Add(this.button4);
@@ -130,13 +131,13 @@
             // 
             // DataVerificationMsg
             // 
-            this.DataVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataVerificationMsg.Location = new System.Drawing.Point(9, 238);
-            this.DataVerificationMsg.Name = "DataVerificationMsg";
-            this.DataVerificationMsg.Size = new System.Drawing.Size(370, 46);
-            this.DataVerificationMsg.TabIndex = 14;
-            this.DataVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DataVerificationMsg.Click += new System.EventHandler(this.label2_Click_1);
+            DataVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            DataVerificationMsg.Location = new System.Drawing.Point(9, 238);
+            DataVerificationMsg.Name = "DataVerificationMsg";
+            DataVerificationMsg.Size = new System.Drawing.Size(370, 46);
+            DataVerificationMsg.TabIndex = 14;
+            DataVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            DataVerificationMsg.Click += new System.EventHandler(this.label2_Click_1);
             // 
             // ReTypePasswordTextBox
             // 
@@ -271,10 +272,11 @@
             // 
             // LoginPanel
             // 
+            this.LoginPanel.Controls.Add(this.LoginVerificationMsg);
             this.LoginPanel.Controls.Add(this.button3);
             this.LoginPanel.Controls.Add(this.button2);
-            this.LoginPanel.Controls.Add(this.textBox4);
-            this.LoginPanel.Controls.Add(this.textBox5);
+            this.LoginPanel.Controls.Add(this.LoginPassword);
+            this.LoginPanel.Controls.Add(this.LoginEmail);
             this.LoginPanel.Controls.Add(this.groupBox1);
             this.LoginPanel.Controls.Add(this.label4);
             this.LoginPanel.Controls.Add(this.LoginUsernameLabel);
@@ -288,7 +290,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(152, 214);
+            this.button3.Location = new System.Drawing.Point(152, 244);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(95, 25);
             this.button3.TabIndex = 13;
@@ -299,7 +301,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(128, 183);
+            this.button2.Location = new System.Drawing.Point(128, 213);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(141, 25);
             this.button2.TabIndex = 12;
@@ -307,19 +309,19 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // textBox4
+            // LoginPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(160, 123);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(167, 23);
-            this.textBox4.TabIndex = 10;
+            this.LoginPassword.Location = new System.Drawing.Point(160, 123);
+            this.LoginPassword.Name = "LoginPassword";
+            this.LoginPassword.Size = new System.Drawing.Size(167, 23);
+            this.LoginPassword.TabIndex = 10;
             // 
-            // textBox5
+            // LoginEmail
             // 
-            this.textBox5.Location = new System.Drawing.Point(160, 95);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(167, 23);
-            this.textBox5.TabIndex = 9;
+            this.LoginEmail.Location = new System.Drawing.Point(160, 95);
+            this.LoginEmail.Name = "LoginEmail";
+            this.LoginEmail.Size = new System.Drawing.Size(167, 23);
+            this.LoginEmail.TabIndex = 9;
             // 
             // groupBox1
             // 
@@ -373,6 +375,15 @@
             this.LoginUsernameLabel.TabIndex = 0;
             this.LoginUsernameLabel.Text = "Email:";
             // 
+            // LoginVerificationMsg
+            // 
+            this.LoginVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginVerificationMsg.Location = new System.Drawing.Point(8, 157);
+            this.LoginVerificationMsg.Name = "LoginVerificationMsg";
+            this.LoginVerificationMsg.Size = new System.Drawing.Size(370, 46);
+            this.LoginVerificationMsg.TabIndex = 17;
+            this.LoginVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -421,8 +432,8 @@
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Panel LoginPanel;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox LoginPassword;
+        private System.Windows.Forms.TextBox LoginEmail;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
@@ -433,7 +444,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox ReTypePasswordTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label DataVerificationMsg;
+        internal static System.Windows.Forms.Label DataVerificationMsg;
+        internal System.Windows.Forms.Label LoginVerificationMsg;
     }
 }
 

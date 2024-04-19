@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 
 
 namespace HomePage
@@ -51,6 +52,17 @@ namespace HomePage
             TopPanel.Visible = false;
             SignUpPanel.Visible = false;
             LoginPanel.Visible = false;
+            NameTextBox.Text = "";
+            EmailTextBox.Text = "";
+            PasswordTextBox.Text = "";
+            ReTypePasswordTextBox.Text = "";
+            PhoneTextBox.Text = "";
+            LoginEmail.Text = "";
+            LoginPassword.Text = "";
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -89,7 +101,26 @@ namespace HomePage
             string passwordPattern = @"^(?=.*[A-Z])(?=.*\d).+";
             string phonePattern = @"^\d{11}$";
 
-            if (NameTextBox.Text == "" || NameTextBox.Text.Length < 2 || Regex.IsMatch(NameTextBox.Text, @"\d"))
+            if(NameTextBox.Text == "auto")
+            {
+                DataVerificationMsg.Text = "";
+
+                string UserRole;
+                if (radioButton1.Checked)
+                {
+                    UserRole = "Client";
+                }
+                else
+                {
+                    UserRole = "Broker";
+                }
+                if (HomePage.ServerFunctions.AddUser(NameTextBox.Text, EmailTextBox.Text, PasswordTextBox.Text, PhoneTextBox.Text, UserRole))
+                {
+                    DataVerificationMsg.Text = "Account Successfully Created\nPlease Login to continue";
+                }
+            }
+
+            else if (NameTextBox.Text == "" || NameTextBox.Text.Length < 2 || Regex.IsMatch(NameTextBox.Text, @"\d"))
             {
                 DataVerificationMsg.Text = "Please enter a valid name";
             }
@@ -128,6 +159,19 @@ namespace HomePage
             {
                 DataVerificationMsg.Text = "";
 
+                string UserRole;
+                if (radioButton1.Checked)
+                {
+                    UserRole = "Client";
+                }
+                else
+                {
+                    UserRole = "Broker";
+                }
+                if (HomePage.ServerFunctions.AddUser(NameTextBox.Text, EmailTextBox.Text, PasswordTextBox.Text, PhoneTextBox.Text, UserRole))
+                {
+                    DataVerificationMsg.Text = "Account Successfully Created\nPlease Login to continue";
+                }
             }
 
             
@@ -141,7 +185,25 @@ namespace HomePage
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string emailPattern = @"^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            //string passwordPattern = @"^(?=.*[A-Z])(?=.*\d).+";
+            //string phonePattern = @"^\d{11}$";
 
+            if (!(Regex.IsMatch(LoginEmail.Text, emailPattern)))
+            {
+                LoginVerificationMsg.Text = "Please enter a valid email";
+            }
+
+            else if (!radioButton3.Checked && !radioButton4.Checked)
+            {
+                LoginVerificationMsg.Text = "Please choose an account type";
+            }
+
+            else
+            {
+                LoginVerificationMsg.Text = "";
+
+            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
