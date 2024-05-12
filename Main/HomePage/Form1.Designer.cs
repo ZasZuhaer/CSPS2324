@@ -49,6 +49,7 @@
             this.EmailLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.LoginPanel = new System.Windows.Forms.Panel();
+            LoginVerificationMsg = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.LoginPassword = new System.Windows.Forms.TextBox();
@@ -58,7 +59,6 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.LoginUsernameLabel = new System.Windows.Forms.Label();
-            this.LoginVerificationMsg = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.SignUpPanel.SuspendLayout();
             this.UserTypeGroupRadio.SuspendLayout();
@@ -272,7 +272,7 @@
             // 
             // LoginPanel
             // 
-            this.LoginPanel.Controls.Add(this.LoginVerificationMsg);
+            this.LoginPanel.Controls.Add(LoginVerificationMsg);
             this.LoginPanel.Controls.Add(this.button3);
             this.LoginPanel.Controls.Add(this.button2);
             this.LoginPanel.Controls.Add(this.LoginPassword);
@@ -286,6 +286,16 @@
             this.LoginPanel.TabIndex = 14;
             this.LoginPanel.Visible = false;
             this.LoginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginPanel_Paint);
+            // 
+            // LoginVerificationMsg
+            // 
+            LoginVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            LoginVerificationMsg.Location = new System.Drawing.Point(8, 157);
+            LoginVerificationMsg.Name = "LoginVerificationMsg";
+            LoginVerificationMsg.Size = new System.Drawing.Size(370, 46);
+            LoginVerificationMsg.TabIndex = 17;
+            LoginVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            LoginVerificationMsg.Click += new System.EventHandler(LoginVerificationMsg_Click);
             // 
             // button3
             // 
@@ -307,6 +317,7 @@
             this.button2.TabIndex = 12;
             this.button2.Text = "Forgot Password?";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // LoginPassword
@@ -375,15 +386,6 @@
             this.LoginUsernameLabel.TabIndex = 0;
             this.LoginUsernameLabel.Text = "Email:";
             // 
-            // LoginVerificationMsg
-            // 
-            this.LoginVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginVerificationMsg.Location = new System.Drawing.Point(8, 157);
-            this.LoginVerificationMsg.Name = "LoginVerificationMsg";
-            this.LoginVerificationMsg.Size = new System.Drawing.Size(370, 46);
-            this.LoginVerificationMsg.TabIndex = 17;
-            this.LoginVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -444,8 +446,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox ReTypePasswordTextBox;
         private System.Windows.Forms.Label label1;
+        internal static System.Windows.Forms.Label LoginVerificationMsg;
         internal static System.Windows.Forms.Label DataVerificationMsg;
-        internal System.Windows.Forms.Label LoginVerificationMsg;
     }
 }
 

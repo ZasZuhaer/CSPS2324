@@ -56,5 +56,19 @@ namespace HomePage
 
             return (rows > 0) ;
         }
+
+        internal static bool isExistingAccount(string email)
+        {
+            CreateSqlConnection();
+
+            string countCommand = $"SELECT COUNT(*) FROM USERS WHERE EMAIL = '{email}'";
+            SqlCommand countQuery = new SqlCommand(countCommand, TheDatabase);
+            int rowCount = (int)countQuery.ExecuteScalar();
+
+            CloseSqlConnection();
+
+            return rowCount > 0;
+        }
+
     }
 }

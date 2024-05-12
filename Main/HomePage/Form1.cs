@@ -202,11 +202,23 @@ namespace HomePage
             else
             {
                 LoginVerificationMsg.Text = "";
-
+                if (HomePage.ServerFunctions.isExistingAccount(LoginEmail.Text))
+                {
+                    LoginVerificationMsg.Text = "Login Successful!";
+                }
+                else
+                {
+                    LoginVerificationMsg.Text = "No account was found associated with this email";
+                }
             }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginVerificationMsg_Click(object sender, EventArgs e)
         {
 
         }
