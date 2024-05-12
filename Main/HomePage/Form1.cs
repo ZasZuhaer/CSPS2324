@@ -63,6 +63,8 @@ namespace HomePage
             radioButton2.Checked = false;
             radioButton3.Checked = false;
             radioButton4.Checked = false;
+            LoginVerificationMsg.Text = "";
+            DataVerificationMsg.Text = "";
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -193,22 +195,31 @@ namespace HomePage
             {
                 LoginVerificationMsg.Text = "Please enter a valid email";
             }
-
-            else if (!radioButton3.Checked && !radioButton4.Checked)
+            else if (!HomePage.ServerFunctions.isExistingAccount(LoginEmail.Text))
             {
-                LoginVerificationMsg.Text = "Please choose an account type";
+                LoginVerificationMsg.Text = "No account was found associated with this email";
+
+            }
+            //else if (!radioButton3.Checked && !radioButton4.Checked)
+            //{
+            //    LoginVerificationMsg.Text = "Please choose an account type";
+            //}
+            else if(LoginPassword.Text != ServerFunctions.getPassword(LoginEmail.Text))
+            {
+                LoginVerificationMsg.Text = "Enter Correct Password";
             }
 
             else
             {
-                LoginVerificationMsg.Text = "";
-                if (HomePage.ServerFunctions.isExistingAccount(LoginEmail.Text))
+                LoginVerificationMsg.Text = "Login Successful!";
+                string accountType = ServerFunctions.getAccountType(LoginEmail.Text);
+                if(accountType == "Broker")
                 {
-                    LoginVerificationMsg.Text = "Login Successful!";
+                    //open broker page
                 }
-                else
+                else if (accountType == "Client")
                 {
-                    LoginVerificationMsg.Text = "No account was found associated with this email";
+                    //open client page
                 }
             }
         }

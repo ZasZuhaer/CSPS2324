@@ -69,6 +69,48 @@ namespace HomePage
 
             return rowCount > 0;
         }
+        
+        internal static string getAccountType(string email)
+        {
+            CreateSqlConnection();
+
+            string accountType = "";
+
+            string checkUserCommand = "SELECT ROLE FROM USERS " +
+                                      $"WHERE EMAIL = '{email}'";
+            SqlCommand checkUser = new SqlCommand(checkUserCommand, TheDatabase);
+            object result = checkUser.ExecuteScalar();
+
+            if (result != null)
+            {
+                accountType = result.ToString();
+            }
+
+            CloseSqlConnection();
+
+            return accountType;
+        }
+
+        internal static string getPassword(string email)
+        {
+            CreateSqlConnection();
+
+            string password = "";
+
+            string getPasswordCommand = "SELECT PASSWORD FROM USERS " +
+                                        $"WHERE EMAIL = '{email}'";
+            SqlCommand getPasswordCmd = new SqlCommand(getPasswordCommand, TheDatabase);
+            object result = getPasswordCmd.ExecuteScalar();
+
+            if (result != null)
+            {
+                password = result.ToString();
+            }
+
+            CloseSqlConnection();
+
+            return password;
+        }
 
     }
 }

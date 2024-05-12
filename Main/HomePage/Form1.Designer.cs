@@ -326,6 +326,7 @@
             this.LoginPassword.Name = "LoginPassword";
             this.LoginPassword.Size = new System.Drawing.Size(167, 23);
             this.LoginPassword.TabIndex = 10;
+            this.LoginPassword.UseSystemPasswordChar = true;
             // 
             // LoginEmail
             // 
@@ -345,6 +346,7 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "I am a";
+            this.groupBox1.Visible = false;
             // 
             // radioButton3
             // 
