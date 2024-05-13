@@ -59,6 +59,7 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.LoginUsernameLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.SignUpPanel.SuspendLayout();
             this.UserTypeGroupRadio.SuspendLayout();
@@ -90,6 +91,7 @@
             // 
             // TopPanel
             // 
+            this.TopPanel.Controls.Add(this.label2);
             this.TopPanel.Controls.Add(this.BackButton);
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
@@ -388,6 +390,15 @@
             this.LoginUsernameLabel.TabIndex = 0;
             this.LoginUsernameLabel.Text = "Email:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(369, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 17);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "label2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -405,6 +416,7 @@
             this.Text = "CSPS2324";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.TopPanel.ResumeLayout(false);
+            this.TopPanel.PerformLayout();
             this.SignUpPanel.ResumeLayout(false);
             this.SignUpPanel.PerformLayout();
             this.UserTypeGroupRadio.ResumeLayout(false);
@@ -448,6 +460,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox ReTypePasswordTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
         internal static System.Windows.Forms.Label LoginVerificationMsg;
         internal static System.Windows.Forms.Label DataVerificationMsg;
     }

@@ -112,5 +112,76 @@ namespace HomePage
             return password;
         }
 
+        internal static bool addTask(string comboBox1Value, string comboBox2Value, string comboBox3Value, string textBox1Value, string textBox2Value, string brokerName, string brokerEmail)
+        {
+            CreateSqlConnection();
+
+            string addTaskCommand = "INSERT INTO Tasks(Office, NAME, TYPE, DESCRIPTION, COMPLETIONTIME, Broker, Email) " +
+                                    $"VALUES('{comboBox1Value}', '{comboBox2Value}', '{comboBox3Value}', '{textBox1Value}', '{textBox2Value}', '{brokerName}', '{brokerEmail}')";
+
+            SqlCommand addTask = new SqlCommand(addTaskCommand, TheDatabase);
+
+            int rows = 0;
+            
+            rows = addTask.ExecuteNonQuery();
+            
+
+
+            return (rows > 0);
+        }
+        
+        internal static bool checkTask(string comboBox1Value, string comboBox2Value, string comboBox3Value, string textBox1Value, string textBox2Value, string brokerName)
+        {
+            CreateSqlConnection();
+
+            bool isDuplicate = false;
+
+
+            string query = $"SELECT COUNT(*) FROM Tasks WHERE Office = '{comboBox1Value}' AND Name = '{textBox1Value}' AND Type = '{comboBox2Value}' AND Description = '{textBox2Value}' AND CompletionTime = '{comboBox3Value}' AND Broker = '{brokerName}'";
+
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+                
+
+                int count = (int)command.ExecuteScalar();
+
+                if (count > 0)
+                {
+                    isDuplicate = true;
+                }
+            
+            
+
+            CloseSqlConnection();
+
+            return isDuplicate;
+        }
+
+        internal static string getName(string email)
+        {
+            string name = "";
+
+            CreateSqlConnection();
+
+            // Define the SQL query to select the name based on the email
+            string query = $"SELECT Name FROM Users WHERE Email = '{email}'";
+
+            // Create a SqlCommand object
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            // Execute the SQL query and retrieve the name
+            object result = command.ExecuteScalar();
+
+            // Check if the result is not null
+            if (result != null)
+            {
+                // Cast the result to string (assuming the name is stored as a string in the database)
+                name = result.ToString();
+            }
+
+            CloseSqlConnection();
+
+            return name;
+        }
+
     }
 }

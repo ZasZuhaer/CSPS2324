@@ -215,7 +215,17 @@ namespace HomePage
                 string accountType = ServerFunctions.getAccountType(LoginEmail.Text);
                 if(accountType == "Broker")
                 {
-                    //open broker page
+
+                    // Create an instance of the new form
+                    Form2 BrokerPage = new Form2(LoginEmail.Text);
+
+                    // Show the new form
+                    BrokerPage.Show();
+
+                    // Close the current form
+                    // this.Hide();
+
+                    
                 }
                 else if (accountType == "Client")
                 {
