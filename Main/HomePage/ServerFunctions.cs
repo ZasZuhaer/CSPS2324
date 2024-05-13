@@ -44,11 +44,11 @@ namespace HomePage
             {
                 if (e.Message.Contains("@"))
                 {
-                    HomePage.Form1.DataVerificationMsg.Text = "Email already exists";
+                    //HomePage.Form1.DataVerificationMsg.Text = "Email already exists";
                 }
                 else
                 {
-                    HomePage.Form1.DataVerificationMsg.Text = "Phone number already exists";
+                    //HomePage.Form1.DataVerificationMsg.Text = "Phone number already exists";
                 }
             }
             
@@ -112,12 +112,12 @@ namespace HomePage
             return password;
         }
 
-        internal static bool addTask(string comboBox1Value, string comboBox2Value, string comboBox3Value, string textBox1Value, string textBox2Value, string brokerName, string brokerEmail)
+        internal static bool addTask(string comboBox1Value, string comboBox2Value, string comboBox3Value, string textBox1Value, string textBox2Value, string brokerName, string brokerEmail, string price)
         {
             CreateSqlConnection();
 
-            string addTaskCommand = "INSERT INTO Tasks(Office, NAME, TYPE, DESCRIPTION, COMPLETIONTIME, Broker, Email) " +
-                                    $"VALUES('{comboBox1Value}', '{comboBox2Value}', '{comboBox3Value}', '{textBox1Value}', '{textBox2Value}', '{brokerName}', '{brokerEmail}')";
+            string addTaskCommand = "INSERT INTO Tasks(Office, NAME, TYPE, DESCRIPTION, COMPLETIONTIME, Broker, Email, BidPrice) " +
+                                    $"VALUES('{comboBox1Value}', '{comboBox2Value}', '{comboBox3Value}', '{textBox1Value}', '{textBox2Value}', '{brokerName}', '{brokerEmail}', '{price}')";
 
             SqlCommand addTask = new SqlCommand(addTaskCommand, TheDatabase);
 

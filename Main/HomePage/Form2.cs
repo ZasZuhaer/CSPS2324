@@ -24,5 +24,19 @@ namespace HomePage
             AddTask TaskWindow = new AddTask(ServerFunctions.getName(brokerEmail), brokerEmail);
             TaskWindow.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AccountSettings accountSettings = new AccountSettings();
+            accountSettings.Show();
+            
+            
+
+        }
     }
 }

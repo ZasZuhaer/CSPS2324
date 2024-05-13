@@ -73,13 +73,14 @@ namespace HomePage
                 else
                 {
                     ServerFunctions.addTask(comboBox1.Text, comboBox2.Text, comboBox3.Text,
-                        textBox1.Text, textBox2.Text, brokerName, brokerEmail);
+                        textBox1.Text, textBox2.Text, brokerName, brokerEmail, textBox3.Text);
                     TaskVerificationMsg.Text = "Task added successfully!";
                     comboBox1.Text = "";
                     comboBox2.Text = "";
                     comboBox3.Text = "";
                     textBox1.Text = "";
                     textBox2.Text = "";
+                    textBox3.Text = "";
                 }
                 
             }

@@ -33,7 +33,7 @@
             this.TopPanel = new System.Windows.Forms.Panel();
             this.BackButton = new System.Windows.Forms.Button();
             this.SignUpPanel = new System.Windows.Forms.Panel();
-            DataVerificationMsg = new System.Windows.Forms.Label();
+            this.DataVerificationMsg = new System.Windows.Forms.Label();
             this.ReTypePasswordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             this.EmailLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.LoginPanel = new System.Windows.Forms.Panel();
-            LoginVerificationMsg = new System.Windows.Forms.Label();
+            this.LoginVerificationMsg = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.LoginPassword = new System.Windows.Forms.TextBox();
@@ -59,7 +59,6 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.LoginUsernameLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.SignUpPanel.SuspendLayout();
             this.UserTypeGroupRadio.SuspendLayout();
@@ -91,7 +90,6 @@
             // 
             // TopPanel
             // 
-            this.TopPanel.Controls.Add(this.label2);
             this.TopPanel.Controls.Add(this.BackButton);
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
@@ -111,7 +109,7 @@
             // 
             // SignUpPanel
             // 
-            this.SignUpPanel.Controls.Add(DataVerificationMsg);
+            this.SignUpPanel.Controls.Add(this.DataVerificationMsg);
             this.SignUpPanel.Controls.Add(this.ReTypePasswordTextBox);
             this.SignUpPanel.Controls.Add(this.label1);
             this.SignUpPanel.Controls.Add(this.button4);
@@ -133,19 +131,20 @@
             // 
             // DataVerificationMsg
             // 
-            DataVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            DataVerificationMsg.Location = new System.Drawing.Point(9, 238);
-            DataVerificationMsg.Name = "DataVerificationMsg";
-            DataVerificationMsg.Size = new System.Drawing.Size(370, 46);
-            DataVerificationMsg.TabIndex = 14;
-            DataVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            DataVerificationMsg.Click += new System.EventHandler(this.label2_Click_1);
+            this.DataVerificationMsg.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
+            this.DataVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataVerificationMsg.Location = new System.Drawing.Point(9, 238);
+            this.DataVerificationMsg.Name = "DataVerificationMsg";
+            this.DataVerificationMsg.Size = new System.Drawing.Size(370, 46);
+            this.DataVerificationMsg.TabIndex = 14;
+            this.DataVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DataVerificationMsg.Click += new System.EventHandler(this.label2_Click_1);
             // 
             // ReTypePasswordTextBox
             // 
             this.ReTypePasswordTextBox.Location = new System.Drawing.Point(160, 179);
             this.ReTypePasswordTextBox.Name = "ReTypePasswordTextBox";
-            this.ReTypePasswordTextBox.Size = new System.Drawing.Size(167, 23);
+            this.ReTypePasswordTextBox.Size = new System.Drawing.Size(167, 27);
             this.ReTypePasswordTextBox.TabIndex = 16;
             this.ReTypePasswordTextBox.UseSystemPasswordChar = true;
             this.ReTypePasswordTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -155,7 +154,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(67, 182);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 17);
+            this.label1.Size = new System.Drawing.Size(122, 21);
             this.label1.TabIndex = 15;
             this.label1.Text = "Re-Type Pass:";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
@@ -175,14 +174,14 @@
             // 
             this.PhoneTextBox.Location = new System.Drawing.Point(160, 207);
             this.PhoneTextBox.Name = "PhoneTextBox";
-            this.PhoneTextBox.Size = new System.Drawing.Size(167, 23);
+            this.PhoneTextBox.Size = new System.Drawing.Size(167, 27);
             this.PhoneTextBox.TabIndex = 13;
             // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.Location = new System.Drawing.Point(160, 151);
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(167, 23);
+            this.PasswordTextBox.Size = new System.Drawing.Size(167, 27);
             this.PasswordTextBox.TabIndex = 12;
             this.PasswordTextBox.UseSystemPasswordChar = true;
             // 
@@ -190,14 +189,14 @@
             // 
             this.EmailTextBox.Location = new System.Drawing.Point(160, 123);
             this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(167, 23);
+            this.EmailTextBox.Size = new System.Drawing.Size(167, 27);
             this.EmailTextBox.TabIndex = 11;
             // 
             // NameTextBox
             // 
             this.NameTextBox.Location = new System.Drawing.Point(160, 95);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(167, 23);
+            this.NameTextBox.Size = new System.Drawing.Size(167, 27);
             this.NameTextBox.TabIndex = 9;
             // 
             // UserTypeGroupRadio
@@ -218,7 +217,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(85, 22);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(65, 21);
+            this.radioButton2.Size = new System.Drawing.Size(82, 25);
             this.radioButton2.TabIndex = 7;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Broker";
@@ -229,7 +228,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(12, 22);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(64, 21);
+            this.radioButton1.Size = new System.Drawing.Size(79, 25);
             this.radioButton1.TabIndex = 6;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Client";
@@ -240,7 +239,7 @@
             this.PhoneLabel.AutoSize = true;
             this.PhoneLabel.Location = new System.Drawing.Point(67, 210);
             this.PhoneLabel.Name = "PhoneLabel";
-            this.PhoneLabel.Size = new System.Drawing.Size(53, 17);
+            this.PhoneLabel.Size = new System.Drawing.Size(67, 21);
             this.PhoneLabel.TabIndex = 4;
             this.PhoneLabel.Text = "Phone:";
             // 
@@ -249,7 +248,7 @@
             this.PasswordLabel.AutoSize = true;
             this.PasswordLabel.Location = new System.Drawing.Point(67, 154);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(73, 17);
+            this.PasswordLabel.Size = new System.Drawing.Size(93, 21);
             this.PasswordLabel.TabIndex = 3;
             this.PasswordLabel.Text = "Password:";
             // 
@@ -258,7 +257,7 @@
             this.EmailLabel.AutoSize = true;
             this.EmailLabel.Location = new System.Drawing.Point(67, 126);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(47, 17);
+            this.EmailLabel.Size = new System.Drawing.Size(57, 21);
             this.EmailLabel.TabIndex = 2;
             this.EmailLabel.Text = "Email:";
             // 
@@ -267,14 +266,14 @@
             this.NameLabel.AutoSize = true;
             this.NameLabel.Location = new System.Drawing.Point(67, 98);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(56, 17);
+            this.NameLabel.Size = new System.Drawing.Size(71, 21);
             this.NameLabel.TabIndex = 0;
             this.NameLabel.Text = "Name: ";
             this.NameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // LoginPanel
             // 
-            this.LoginPanel.Controls.Add(LoginVerificationMsg);
+            this.LoginPanel.Controls.Add(this.LoginVerificationMsg);
             this.LoginPanel.Controls.Add(this.button3);
             this.LoginPanel.Controls.Add(this.button2);
             this.LoginPanel.Controls.Add(this.LoginPassword);
@@ -291,13 +290,14 @@
             // 
             // LoginVerificationMsg
             // 
-            LoginVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            LoginVerificationMsg.Location = new System.Drawing.Point(8, 157);
-            LoginVerificationMsg.Name = "LoginVerificationMsg";
-            LoginVerificationMsg.Size = new System.Drawing.Size(370, 46);
-            LoginVerificationMsg.TabIndex = 17;
-            LoginVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            LoginVerificationMsg.Click += new System.EventHandler(LoginVerificationMsg_Click);
+            this.LoginVerificationMsg.AccessibleRole = System.Windows.Forms.AccessibleRole.StaticText;
+            this.LoginVerificationMsg.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginVerificationMsg.Location = new System.Drawing.Point(8, 157);
+            this.LoginVerificationMsg.Name = "LoginVerificationMsg";
+            this.LoginVerificationMsg.Size = new System.Drawing.Size(370, 46);
+            this.LoginVerificationMsg.TabIndex = 17;
+            this.LoginVerificationMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LoginVerificationMsg.Click += new System.EventHandler(this.LoginVerificationMsg_Click);
             // 
             // button3
             // 
@@ -326,7 +326,7 @@
             // 
             this.LoginPassword.Location = new System.Drawing.Point(160, 123);
             this.LoginPassword.Name = "LoginPassword";
-            this.LoginPassword.Size = new System.Drawing.Size(167, 23);
+            this.LoginPassword.Size = new System.Drawing.Size(167, 27);
             this.LoginPassword.TabIndex = 10;
             this.LoginPassword.UseSystemPasswordChar = true;
             // 
@@ -334,7 +334,7 @@
             // 
             this.LoginEmail.Location = new System.Drawing.Point(160, 95);
             this.LoginEmail.Name = "LoginEmail";
-            this.LoginEmail.Size = new System.Drawing.Size(167, 23);
+            this.LoginEmail.Size = new System.Drawing.Size(167, 27);
             this.LoginEmail.TabIndex = 9;
             // 
             // groupBox1
@@ -355,7 +355,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(85, 22);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(65, 21);
+            this.radioButton3.Size = new System.Drawing.Size(82, 25);
             this.radioButton3.TabIndex = 7;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Broker";
@@ -366,7 +366,7 @@
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(12, 22);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(64, 21);
+            this.radioButton4.Size = new System.Drawing.Size(79, 25);
             this.radioButton4.TabIndex = 6;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Client";
@@ -377,7 +377,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(67, 126);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 17);
+            this.label4.Size = new System.Drawing.Size(93, 21);
             this.label4.TabIndex = 1;
             this.label4.Text = "Password:";
             // 
@@ -386,22 +386,13 @@
             this.LoginUsernameLabel.AutoSize = true;
             this.LoginUsernameLabel.Location = new System.Drawing.Point(67, 98);
             this.LoginUsernameLabel.Name = "LoginUsernameLabel";
-            this.LoginUsernameLabel.Size = new System.Drawing.Size(47, 17);
+            this.LoginUsernameLabel.Size = new System.Drawing.Size(57, 21);
             this.LoginUsernameLabel.TabIndex = 0;
             this.LoginUsernameLabel.Text = "Email:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(369, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 17);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "label2";
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 411);
@@ -416,7 +407,6 @@
             this.Text = "CSPS2324";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.TopPanel.ResumeLayout(false);
-            this.TopPanel.PerformLayout();
             this.SignUpPanel.ResumeLayout(false);
             this.SignUpPanel.PerformLayout();
             this.UserTypeGroupRadio.ResumeLayout(false);
@@ -460,9 +450,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox ReTypePasswordTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        internal static System.Windows.Forms.Label LoginVerificationMsg;
-        internal static System.Windows.Forms.Label DataVerificationMsg;
+        internal System.Windows.Forms.Label LoginVerificationMsg;
+        internal System.Windows.Forms.Label DataVerificationMsg;
     }
 }
 
