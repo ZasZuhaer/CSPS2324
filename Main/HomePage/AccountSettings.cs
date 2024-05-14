@@ -18,7 +18,14 @@ namespace HomePage
             this.email = email;
 
             InitializeComponent();
+            this.textBox1.Text = ServerFunctions.getId(email);
+            this.textBox2.Text = ServerFunctions.getName(email);
+            this.textBox3.Text = email;
+            this.textBox4.Text = ServerFunctions.getPhone(email);
+            this.textBox5.Text = ServerFunctions.getAddress(email);
+            this.textBox6.Text = ServerFunctions.getRatings(email);
             this.textBox7.Text = ServerFunctions.getBalance(email);
+            
 
         }
 
@@ -72,6 +79,11 @@ namespace HomePage
             {
                 MessageBox.Show("Enter amount, wallet address and network");
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

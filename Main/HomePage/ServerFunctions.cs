@@ -10,7 +10,7 @@ using System.Drawing.Text;
 
 namespace HomePage
 {
-    internal class TaskInfo
+    public class TaskInfo
     {
         public int Id { get; set; }
         public string Office { get; set; }
@@ -130,7 +130,7 @@ namespace HomePage
             CreateSqlConnection();
 
             string addTaskCommand = "INSERT INTO Tasks(Office, NAME, TYPE, DESCRIPTION, COMPLETIONTIME, Broker, Email, BidPrice) " +
-                                    $"VALUES('{comboBox1Value}', '{comboBox2Value}', '{comboBox3Value}', '{textBox1Value}', '{textBox2Value}', '{brokerName}', '{brokerEmail}', '{price}')";
+                                    $"VALUES('{comboBox1Value}', '{textBox1Value}', '{comboBox2Value}', '{textBox2Value}', '{comboBox3Value}', '{brokerName}', '{brokerEmail}', '{price}')";
 
             SqlCommand addTask = new SqlCommand(addTaskCommand, TheDatabase);
 
@@ -291,6 +291,194 @@ namespace HomePage
             // Return the list of tasks
             return tasks;
         }
+
+        internal static List<TaskInfo> SeeAddedTasks(string email)
+        {
+            List<TaskInfo> tasks = new List<TaskInfo>();
+
+            // Create SQL connection
+            CreateSqlConnection();
+
+            // Define SQL command to select all tasks
+            string query = $"SELECT * FROM Tasks WHERE Email = '{email}'";
+
+            // Create SqlCommand object
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            // Execute the command
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                // Check if there are any rows
+                if (reader.HasRows)
+                {
+                    // Iterate through the rows
+                    while (reader.Read())
+                    {
+                        // Create a new TaskInfo object and populate its properties
+                        TaskInfo task = new TaskInfo
+                        {
+                            Id = reader.GetInt32(0), // Assuming Id is the first column
+                            Office = reader.GetString(1),
+                            Name = reader.GetString(2),
+                            Type = reader.GetString(3),
+                            Description = reader.GetString(4),
+                            CompletionTime = reader.GetString(5),
+                            Broker = reader.GetString(6),
+                            Email = reader.GetString(7),
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8) // Check for null value in BidPrice
+                        };
+
+                        // Add the task to the list
+                        tasks.Add(task);
+                    }
+                }
+            }
+
+            // Close SQL connection
+            CloseSqlConnection();
+
+            // Return the list of tasks
+            return tasks;
+        }
+
+        internal static List<TaskInfo> SeePendingTasks(string email)
+        {
+            List<TaskInfo> tasks = new List<TaskInfo>();
+
+            // Create SQL connection
+            CreateSqlConnection();
+
+            // Define SQL command to select all tasks
+            string query = $"SELECT * FROM Tasks WHERE Email = '{email}' and Status = 'pending'";
+
+            // Create SqlCommand object
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            // Execute the command
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                // Check if there are any rows
+                if (reader.HasRows)
+                {
+                    // Iterate through the rows
+                    while (reader.Read())
+                    {
+                        // Create a new TaskInfo object and populate its properties
+                        TaskInfo task = new TaskInfo
+                        {
+                            Id = reader.GetInt32(0), // Assuming Id is the first column
+                            Office = reader.GetString(1),
+                            Name = reader.GetString(2),
+                            Type = reader.GetString(3),
+                            Description = reader.GetString(4),
+                            CompletionTime = reader.GetString(5),
+                            Broker = reader.GetString(6),
+                            Email = reader.GetString(7),
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8) // Check for null value in BidPrice
+                        };
+
+                        // Add the task to the list
+                        tasks.Add(task);
+                    }
+                }
+            }
+
+            // Close SQL connection
+            CloseSqlConnection();
+
+            // Return the list of tasks
+            return tasks;
+        }
+
+        internal static string getId(string email)
+        {
+            string id = "";
+
+            CreateSqlConnection();
+
+            string query = $"SELECT Id FROM Users WHERE Email = '{email}'";
+
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            object result = command.ExecuteScalar();
+
+            if (result != null)
+            {
+                id = result.ToString();
+            }
+
+            CloseSqlConnection();
+
+            return id;
+        }
+
+
+        internal static string getPhone(string email)
+        {
+            string phone = "";
+
+            CreateSqlConnection();
+
+            string query = $"SELECT Phone FROM Users WHERE email = '{email}'";
+
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            object result = command.ExecuteScalar();
+
+            if (result != null)
+            {
+                phone = result.ToString();
+            }
+
+            CloseSqlConnection();
+
+            return phone;
+        }
+
+        internal static string getAddress(string email)
+        {
+            string address = "";
+
+            CreateSqlConnection();
+
+            string query = $"SELECT Address FROM Users WHERE email = '{email}'";
+
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            object result = command.ExecuteScalar();
+
+            if (result != null)
+            {
+                address = result.ToString();
+            }
+
+            CloseSqlConnection();
+
+            return address;
+        }
+
+        internal static string getRatings(string email)
+        {
+            string ratings = "";
+
+            CreateSqlConnection();
+
+            string query = $"SELECT Rating FROM Users WHERE email = '{email}'";
+
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            object result = command.ExecuteScalar();
+
+            if (result != null)
+            {
+                ratings = result.ToString();
+            }
+
+            CloseSqlConnection();
+
+            return ratings;
+        }
+
 
     }
 }

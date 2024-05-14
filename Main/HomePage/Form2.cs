@@ -43,13 +43,49 @@ namespace HomePage
 
         private void button3_Click(object sender, EventArgs e)
         {
-            List<TaskInfo> allTasks = new List<TaskInfo>();
+            SeeAddedTasks();
+            
+        }
 
+        void SeeAddedTasks()
+        {
+
+            List<TaskInfo> tasks = ServerFunctions.SeeAddedTasks(brokerEmail);
+            flowLayoutPanel1.Controls.Clear();
+            foreach (TaskInfo task in tasks)
+            {
+                TaskBoxControl taskBox = new TaskBoxControl();
+                taskBox.SetTaskDetails(task);
+                flowLayoutPanel1.Controls.Add(taskBox);
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SeePendingTasks();
+        }
+        void SeePendingTasks()
+        {
+
+            List<TaskInfo> tasks = ServerFunctions.SeePendingTasks(brokerEmail);
+            flowLayoutPanel1.Controls.Clear();
+
+            foreach (TaskInfo task in tasks)
+            {
+                TaskBoxControl taskBox = new TaskBoxControl();
+                taskBox.SetTaskDetails(task);
+                flowLayoutPanel1.Controls.Add(taskBox);
+            }
         }
     }
 }

@@ -22,7 +22,7 @@ namespace HomePage
             //Form1 LoginPage = new Form1();
             //LoginPage.ShowDialog();
 
-            Form2 BrokerPage = new Form2("zas.ZUHAER2@GMAIL.com");
+            Form2 BrokerPage = new Form2("siddique@GMAIL.com");
             BrokerPage.ShowDialog();
             
         }
