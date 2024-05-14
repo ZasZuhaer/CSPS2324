@@ -12,18 +12,66 @@ namespace HomePage
 {
     public partial class AccountSettings : Form
     {
-        public AccountSettings()
+        string email;
+        public AccountSettings(string email)
         {
+            this.email = email;
+
             InitializeComponent();
-        }
-        ~AccountSettings()
-        {
+            this.textBox7.Text = ServerFunctions.getBalance(email);
 
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(textBox8.Text != "" && textBox8.Text != "" && textBox10.Text!="")
+            {
+                int currentBalance = Convert.ToInt32(ServerFunctions.getBalance(email));
+                int withdrawAmount = 0;
+                try {
+                    withdrawAmount = Convert.ToInt32(textBox10.Text);
+                    if (withdrawAmount <= currentBalance && withdrawAmount > 0)
+                    {
+                        ServerFunctions.DeductBalance(email, withdrawAmount);
+                        MessageBox.Show("The amount has been sent to your wallet");
+                        textBox7.Text = ServerFunctions.getBalance(email);
+                        textBox10.Text = "";
+                        textBox8.Text = "";
+                        textBox9.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("You don't have enough balance");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Enter a numerical value");
+                }
+                
+                
+
+            }
+            else
+            {
+                MessageBox.Show("Enter amount, wallet address and network");
+            }
         }
     }
 }

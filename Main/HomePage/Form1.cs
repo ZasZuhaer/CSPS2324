@@ -15,8 +15,10 @@ namespace HomePage
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
+            
             InitializeComponent();
         }
 
@@ -215,23 +217,49 @@ namespace HomePage
                 string accountType = ServerFunctions.getAccountType(LoginEmail.Text);
                 if(accountType == "Broker")
                 {
-
-                    // Create an instance of the new form
+                    this.Hide();
+                    
+                    // Create an instance of Form2 (BrokerPage)
                     Form2 BrokerPage = new Form2(LoginEmail.Text);
 
-                    // Show the new form
-                    BrokerPage.Show();
+                    // Subscribe to the FormClosed event of Form2
+                    BrokerPage.FormClosed += BrokerPage_FormClosed;
 
-                    // Close the current form
-                    // this.Hide();
+                    // Show Form2 (BrokerPage)
+                    BrokerPage.ShowDialog();
 
-                    
+                    // Hide Form1 (current form)
+
+
                 }
                 else if (accountType == "Client")
                 {
                     //open client page
                 }
             }
+        }
+        private void BrokerPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Show Form1 (current form) when Form2 (BrokerPage) is closed
+            LoginButton.Visible = true;
+            SignUpButton.Visible = true;
+            TopPanel.Visible = false;
+            SignUpPanel.Visible = false;
+            LoginPanel.Visible = false;
+            NameTextBox.Text = "";
+            EmailTextBox.Text = "";
+            PasswordTextBox.Text = "";
+            ReTypePasswordTextBox.Text = "";
+            PhoneTextBox.Text = "";
+            LoginEmail.Text = "";
+            LoginPassword.Text = "";
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            LoginVerificationMsg.Text = "";
+            DataVerificationMsg.Text = "";
+            this.Show();
         }
 
         private void button2_Click_1(object sender, EventArgs e)

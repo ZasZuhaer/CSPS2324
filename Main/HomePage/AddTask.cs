@@ -58,7 +58,8 @@ namespace HomePage
                 string.IsNullOrWhiteSpace(comboBox2.Text) ||
                 string.IsNullOrWhiteSpace(comboBox3.Text) ||
                 string.IsNullOrWhiteSpace(textBox1.Text) ||
-                string.IsNullOrWhiteSpace(textBox2.Text))
+                string.IsNullOrWhiteSpace(textBox2.Text) ||
+                string.IsNullOrWhiteSpace(textBox3.Text))
             {
                 // If any control is empty, return false
                 TaskVerificationMsg.Text = "Please insert all the informations";

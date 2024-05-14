@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace HomePage
 {
+
     internal static class Program
     {
         /// <summary>
@@ -16,7 +17,14 @@ namespace HomePage
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2("sid@gmail.com"));
+            //Application.Run(new Form1());
+
+            //Form1 LoginPage = new Form1();
+            //LoginPage.ShowDialog();
+
+            Form2 BrokerPage = new Form2("zas.ZUHAER2@GMAIL.com");
+            BrokerPage.ShowDialog();
+            
         }
     }
 }

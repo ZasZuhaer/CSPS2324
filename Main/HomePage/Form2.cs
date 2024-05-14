@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace HomePage
 {
+    
+
     public partial class Form2 : Form
     {
         internal string brokerEmail;
@@ -32,10 +34,21 @@ namespace HomePage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AccountSettings accountSettings = new AccountSettings();
-            accountSettings.Show();
+            AccountSettings accountSettings = new AccountSettings(brokerEmail);
+            accountSettings.ShowDialog();
             
             
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<TaskInfo> allTasks = new List<TaskInfo>();
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
 
         }
     }
