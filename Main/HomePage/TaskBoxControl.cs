@@ -17,6 +17,7 @@ namespace HomePage
         string email;
         string brokerEmail;
         int taskID;
+        //string brokerRating;
         public TaskBoxControl(string email, string type)
         {
             this.email = email;
@@ -50,12 +51,13 @@ namespace HomePage
             button4.Hide();
             brokerEmail = task.Email;
             taskID = task.Id;
+            
             if(task.Status == "active" && task.Payment == email)
             {
                 label17.Show();
                 button3.Show();
             }
-            if(task.Status == "pending" && accountType == "Broker")
+            if(task.Status == "Pending" && accountType == "Broker")
             {
                 button4.Text = "Mark Completed!";
                 button4.Show();
@@ -85,6 +87,10 @@ namespace HomePage
             {
                 MessageBox.Show("Couldn't change payment status to email");
             }
+            else
+            {
+                MessageBox.Show("Task Requested!");
+            }
         }
 
         private void label16_Click(object sender, EventArgs e)
@@ -99,8 +105,13 @@ namespace HomePage
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ServerFunctions.DeductBalance(email, Convert.ToInt32(label13.Text));
-            ServerFunctions.DepositBalance(brokerEmail, Convert.ToInt32(label13.Text));
+            int mainAmount = Convert.ToInt32(label13.Text);
+            int commission = mainAmount>100?10:5;
+            int brokerGets = mainAmount - commission;
+
+            ServerFunctions.DeductBalance(email, mainAmount);
+            ServerFunctions.DepositBalance(brokerEmail, brokerGets);
+            ServerFunctions.DepositBalance("admin@govtaid.com", commission);
             ServerFunctions.ChangePaymentStatusToPaid(taskID);
             MessageBox.Show("Payment Successful! Please Refresh");
         }
@@ -108,6 +119,12 @@ namespace HomePage
         private void button4_Click(object sender, EventArgs e)
         {
             ServerFunctions.ChangeTaskStatusToActive(Convert.ToInt32(taskID));
+            MessageBox.Show("Task Marked as Completed! Please refresh to update screen");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

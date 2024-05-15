@@ -22,12 +22,15 @@ namespace HomePage
             //Form1 loginpage = new Form1();
             //loginpage.ShowDialog();
 
-            //Form2 BrokerPage = new Form2("zas.zuhaer2@GMAIL.com");
+            //Form2 BrokerPage = new Form2("zas.zuhaer@gmail.com");
             //BrokerPage.ShowDialog();
 
-            AdminControl admin = new AdminControl();
-            admin.ShowDialog();
-            
+            //AdminControl admin = new AdminControl();
+            //admin.ShowDialog();
+
+            Form3 BrokerPage = new Form3("sidd@outlook.com");
+            BrokerPage.ShowDialog();
+
         }
     }
 }
