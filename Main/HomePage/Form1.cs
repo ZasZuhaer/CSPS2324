@@ -193,9 +193,19 @@ namespace HomePage
             //string passwordPattern = @"^(?=.*[A-Z])(?=.*\d).+";
             //string phonePattern = @"^\d{11}$";
 
+
+
             if (!(Regex.IsMatch(LoginEmail.Text, emailPattern)))
             {
                 LoginVerificationMsg.Text = "Please enter a valid email";
+            }
+
+            else if (LoginEmail.Text == "admin@govtaid.com" && LoginPassword.Text == "Admin1234")
+            {
+                this.Hide();
+                AdminControl adminPage = new AdminControl();
+                adminPage.FormClosed += FormClosed;
+                adminPage.ShowDialog();
             }
             else if (!HomePage.ServerFunctions.isExistingAccount(LoginEmail.Text))
             {
@@ -211,6 +221,8 @@ namespace HomePage
                 LoginVerificationMsg.Text = "Enter Correct Password";
             }
 
+            
+
             else
             {
                 LoginVerificationMsg.Text = "Login Successful!";
@@ -223,7 +235,7 @@ namespace HomePage
                     Form2 BrokerPage = new Form2(LoginEmail.Text);
 
                     // Subscribe to the FormClosed event of Form2
-                    BrokerPage.FormClosed += BrokerPage_FormClosed;
+                    BrokerPage.FormClosed += FormClosed;
 
                     // Show Form2 (BrokerPage)
                     BrokerPage.ShowDialog();
@@ -235,10 +247,14 @@ namespace HomePage
                 else if (accountType == "Client")
                 {
                     //open client page
+                    this.Hide();
+                    Form3 ClientPage = new Form3(LoginEmail.Text);
+                    ClientPage.FormClosed += FormClosed;
+                    ClientPage.ShowDialog();
                 }
             }
         }
-        private void BrokerPage_FormClosed(object sender, FormClosedEventArgs e)
+        private new void FormClosed(object sender, FormClosedEventArgs e)
         {
             // Show Form1 (current form) when Form2 (BrokerPage) is closed
             LoginButton.Visible = true;
@@ -261,6 +277,7 @@ namespace HomePage
             DataVerificationMsg.Text = "";
             this.Show();
         }
+        
 
         private void button2_Click_1(object sender, EventArgs e)
         {

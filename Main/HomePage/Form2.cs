@@ -18,6 +18,7 @@ namespace HomePage
         public Form2(string Email)
         {
             brokerEmail = Email;
+            
             InitializeComponent();
         }
 
@@ -54,7 +55,7 @@ namespace HomePage
             flowLayoutPanel1.Controls.Clear();
             foreach (TaskInfo task in tasks)
             {
-                TaskBoxControl taskBox = new TaskBoxControl();
+                TaskBoxControl taskBox = new TaskBoxControl(brokerEmail, "Broker");
                 taskBox.SetTaskDetails(task);
                 flowLayoutPanel1.Controls.Add(taskBox);
             }
@@ -82,10 +83,29 @@ namespace HomePage
 
             foreach (TaskInfo task in tasks)
             {
-                TaskBoxControl taskBox = new TaskBoxControl();
+                TaskBoxControl taskBox = new TaskBoxControl(brokerEmail, "Broker");
                 taskBox.SetTaskDetails(task);
                 flowLayoutPanel1.Controls.Add(taskBox);
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string searchStr = textBox1.Text;
+            List<TaskInfo> tasks = ServerFunctions.SearchTasksBySubstring(searchStr);
+            flowLayoutPanel1.Controls.Clear();
+
+            foreach (TaskInfo task in tasks)
+            {
+                TaskBoxControl taskBox = new TaskBoxControl(brokerEmail, "Broker");
+                taskBox.SetTaskDetails(task);
+                flowLayoutPanel1.Controls.Add(taskBox);
+            }
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

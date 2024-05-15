@@ -21,6 +21,9 @@ namespace HomePage
         public string Broker { get; set; }
         public string Email { get; set; }
         public string BidPrice { get; set; } // Nullable
+
+        public string Status {  get; set; }
+        public string Payment {  get; set; }
     }
 
     internal class ServerFunctions
@@ -276,7 +279,9 @@ namespace HomePage
                             CompletionTime = reader.GetString(5),
                             Broker = reader.GetString(6),
                             Email = reader.GetString(7),
-                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8) // Check for null value in BidPrice
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8), // Check for null value in BidPrice
+                            Status = reader.GetString(9),
+                            Payment = reader.GetString(10)
                         };
 
                         // Add the task to the list
@@ -325,7 +330,9 @@ namespace HomePage
                             CompletionTime = reader.GetString(5),
                             Broker = reader.GetString(6),
                             Email = reader.GetString(7),
-                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8) // Check for null value in BidPrice
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8), // Check for null value in BidPrice
+                            Status = reader.GetString(9),
+                            Payment = reader.GetString(10)
                         };
 
                         // Add the task to the list
@@ -374,7 +381,60 @@ namespace HomePage
                             CompletionTime = reader.GetString(5),
                             Broker = reader.GetString(6),
                             Email = reader.GetString(7),
-                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8) // Check for null value in BidPrice
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8), // Check for null value in BidPrice
+                            Status = reader.GetString(9),
+                            Payment = reader.GetString(10)
+                        };
+
+                        // Add the task to the list
+                        tasks.Add(task);
+                    }
+                }
+            }
+
+            // Close SQL connection
+            CloseSqlConnection();
+
+            // Return the list of tasks
+            return tasks;
+        }
+
+        internal static List<TaskInfo> SeeActiveTasks()
+        {
+            List<TaskInfo> tasks = new List<TaskInfo>();
+
+            // Create SQL connection
+            CreateSqlConnection();
+
+            // Define SQL command to select all tasks
+            string query = $"SELECT * FROM Tasks WHERE Status = 'active'";
+
+            // Create SqlCommand object
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            // Execute the command
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                // Check if there are any rows
+                if (reader.HasRows)
+                {
+                    // Iterate through the rows
+                    while (reader.Read())
+                    {
+                        // Create a new TaskInfo object and populate its properties
+                        TaskInfo task = new TaskInfo
+                        {
+                            Id = reader.GetInt32(0), // Assuming Id is the first column
+                            Office = reader.GetString(1),
+                            Name = reader.GetString(2),
+                            Type = reader.GetString(3),
+                            Description = reader.GetString(4),
+                            CompletionTime = reader.GetString(5),
+                            Broker = reader.GetString(6),
+                            Email = reader.GetString(7),
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8), // Check for null value in BidPrice
+                            Status = reader.GetString(9),
+                            Payment = reader.GetString(10)
                         };
 
                         // Add the task to the list
@@ -435,6 +495,107 @@ namespace HomePage
             return phone;
         }
 
+        internal static List<TaskInfo> SeeUnpaidTasks(string clientEmail)
+        {
+            List<TaskInfo> tasks = new List<TaskInfo>();
+
+            // Create SQL connection
+            CreateSqlConnection();
+
+            // Define SQL command to select all tasks
+            string query = $"SELECT * FROM Tasks WHERE status = 'active' and payment = '{clientEmail}'";
+
+            // Create SqlCommand object
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            // Execute the command
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                // Check if there are any rows
+                if (reader.HasRows)
+                {
+                    // Iterate through the rows
+                    while (reader.Read())
+                    {
+                        // Create a new TaskInfo object and populate its properties
+                        TaskInfo task = new TaskInfo
+                        {
+                            Id = reader.GetInt32(0), // Assuming Id is the first column
+                            Office = reader.GetString(1),
+                            Name = reader.GetString(2),
+                            Type = reader.GetString(3),
+                            Description = reader.GetString(4),
+                            CompletionTime = reader.GetString(5),
+                            Broker = reader.GetString(6),
+                            Email = reader.GetString(7),
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8), // Check for null value in BidPrice
+                            Status = reader.GetString(9),
+                            Payment = reader.GetString(10)
+                        };
+
+                        // Add the task to the list
+                        tasks.Add(task);
+                    }
+                }
+            }
+
+            // Close SQL connection
+            CloseSqlConnection();
+
+            // Return the list of tasks
+            return tasks;
+        }
+
+        internal static List<TaskInfo> SeeOngoingTasks(string clientEmail)
+        {
+            List<TaskInfo> tasks = new List<TaskInfo>();
+
+            // Create SQL connection
+            CreateSqlConnection();
+
+            // Define SQL command to select all tasks
+            string query = $"SELECT * FROM Tasks WHERE payment = '{clientEmail}'";
+
+            // Create SqlCommand object
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            // Execute the command
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                // Check if there are any rows
+                if (reader.HasRows)
+                {
+                    // Iterate through the rows
+                    while (reader.Read())
+                    {
+                        // Create a new TaskInfo object and populate its properties
+                        TaskInfo task = new TaskInfo
+                        {
+                            Id = reader.GetInt32(0), // Assuming Id is the first column
+                            Office = reader.GetString(1),
+                            Name = reader.GetString(2),
+                            Type = reader.GetString(3),
+                            Description = reader.GetString(4),
+                            CompletionTime = reader.GetString(5),
+                            Broker = reader.GetString(6),
+                            Email = reader.GetString(7),
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8), // Check for null value in BidPrice
+                            Status = reader.GetString(9),
+                            Payment = reader.GetString(10)
+                        };
+
+                        // Add the task to the list
+                        tasks.Add(task);
+                    }
+                }
+            }
+
+            // Close SQL connection
+            CloseSqlConnection();
+
+            // Return the list of tasks
+            return tasks;
+        }
         internal static string getAddress(string email)
         {
             string address = "";
@@ -479,6 +640,157 @@ namespace HomePage
             return ratings;
         }
 
+        internal static List<TaskInfo> SearchTasksBySubstring(string substring)
+        {
+            List<TaskInfo> matchingTasks = new List<TaskInfo>();
 
+            CreateSqlConnection();
+
+            string query = $@"
+        SELECT *
+        FROM Tasks
+        WHERE Name LIKE '%{substring}%'
+            OR Description LIKE '%{substring}%'
+            OR Office LIKE '%{substring}%'
+            OR Type LIKE '%{substring}%'
+            OR Broker LIKE '%{substring}%';";
+
+            SqlCommand command = new SqlCommand(query, TheDatabase);
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        TaskInfo task = new TaskInfo
+                        {
+                            Id = reader.GetInt32(0),
+                            Office = reader.GetString(1),
+                            Name = reader.GetString(2),
+                            Type = reader.GetString(3),
+                            Description = reader.GetString(4),
+                            CompletionTime = reader.GetString(5),
+                            Broker = reader.GetString(6),
+                            Email = reader.GetString(7),
+                            BidPrice = reader.IsDBNull(8) ? null : reader.GetString(8),
+                            Status = reader.GetString(9),
+                            Payment = reader.GetString(10)
+                        };
+
+                        matchingTasks.Add(task);
+                    }
+                }
+            }
+
+            CloseSqlConnection();
+
+            return matchingTasks;
+        }
+
+        internal static bool DepositBalance(string email, decimal amount)
+        {
+            // Create the SQL connection
+            CreateSqlConnection();
+
+            // Define the SQL command to deduct the amount from the user's balance
+            string deductCommand = $"UPDATE Users SET Balance = Balance + {amount} WHERE Email = '{email}'";
+
+            // Create a SqlCommand object
+            SqlCommand deductCmd = new SqlCommand(deductCommand, TheDatabase);
+
+            // Execute the SQL command
+            int rowsAffected = deductCmd.ExecuteNonQuery();
+
+            // Close the SQL connection
+            CloseSqlConnection();
+
+            // Return true if rows were affected (indicating successful deduction), otherwise false
+            return rowsAffected > 0;
+        }
+
+        internal static bool ChangeTaskStatusToPending(int taskId)
+        {
+            CreateSqlConnection();
+
+            string updateCommand = $"UPDATE Tasks SET Status = 'Pending' WHERE Id = {taskId}";
+
+            SqlCommand updateTask = new SqlCommand(updateCommand, TheDatabase);
+
+            int rowsAffected = updateTask.ExecuteNonQuery();
+
+            CloseSqlConnection();
+
+            return rowsAffected > 0;
+        }
+
+        internal static bool ChangeTaskStatusToActive(int taskId)
+        {
+            CreateSqlConnection();
+
+            string updateCommand = $"UPDATE Tasks SET Status = 'active' WHERE Id = {taskId}";
+
+            SqlCommand updateTask = new SqlCommand(updateCommand, TheDatabase);
+
+            int rowsAffected = updateTask.ExecuteNonQuery();
+
+            CloseSqlConnection();
+
+            return rowsAffected > 0;
+        }
+
+        internal static bool ChangePaymentStatusToPaid(int taskId)
+        {
+            CreateSqlConnection();
+
+            string updateCommand = $"UPDATE Tasks SET payment = 'paid' WHERE Id = {taskId}";
+
+            SqlCommand updateTask = new SqlCommand(updateCommand, TheDatabase);
+
+            int rowsAffected = updateTask.ExecuteNonQuery();
+
+            CloseSqlConnection();
+
+            return rowsAffected > 0;
+        }
+
+        internal static bool ChangePaymentToClientEmail(int taskId, string clientEmail)
+        {
+            CreateSqlConnection();
+
+            string updateCommand = $"UPDATE Tasks SET Payment = '{clientEmail}' WHERE Id = {taskId}";
+
+            SqlCommand updateTask = new SqlCommand(updateCommand, TheDatabase);
+
+            int rowsAffected = updateTask.ExecuteNonQuery();
+
+            CloseSqlConnection();
+
+            return rowsAffected > 0;
+        }
+
+        internal static void DeleteUser(int userId)
+        {
+            using (SqlConnection connection = new SqlConnection("Data Source=(local);Initial Catalog=TheDatabase;Integrated Security=True"))
+            {
+                connection.Open();
+                string deleteQuery = $"DELETE FROM Users WHERE id = @UserId";
+                SqlCommand command = new SqlCommand(deleteQuery, connection);
+                command.Parameters.AddWithValue("@UserId", userId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        internal static void DeleteTask(int taskId)
+        {
+            using (SqlConnection connection = new SqlConnection("Data Source=(local);Initial Catalog=TheDatabase;Integrated Security=True"))
+            {
+                connection.Open();
+                string deleteQuery = $"DELETE FROM Tasks WHERE Id = @TaskId";
+                SqlCommand command = new SqlCommand(deleteQuery, connection);
+                command.Parameters.AddWithValue("@TaskId", taskId);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

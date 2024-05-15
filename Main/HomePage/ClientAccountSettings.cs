@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace HomePage
 {
-    public partial class AccountSettings : Form
+    public partial class ClientAccountSettings : Form
     {
         string email;
-        public AccountSettings(string email)
+        public ClientAccountSettings(string email)
         {
             this.email = email;
 
@@ -23,81 +24,60 @@ namespace HomePage
             this.textBox3.Text = email;
             this.textBox4.Text = ServerFunctions.getPhone(email);
             this.textBox5.Text = ServerFunctions.getAddress(email);
-            this.textBox6.Text = ServerFunctions.getRatings(email);
+            this.textBox8.Text = "bcfr7sAHTD9CgdQo3HTMTkV8LK4ZnX71";
             this.textBox7.Text = ServerFunctions.getBalance(email);
-            
 
-        }
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
+            panel1.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if(textBox8.Text != "" && textBox9.Text != "" && textBox10.Text!="")
+            if (textBox10.Text != "" && textBox9.Text != "")
             {
-                int currentBalance = Convert.ToInt32(ServerFunctions.getBalance(email));
-                int withdrawAmount = 0;
-                try {
-                    withdrawAmount = Convert.ToInt32(textBox10.Text);
-                    if (withdrawAmount <= currentBalance && withdrawAmount > 0)
+                int depositAmount = 0;
+                try
+                {
+                    depositAmount = Convert.ToInt32(textBox10.Text);
+                    if (depositAmount >=50)
                     {
-                        ServerFunctions.DeductBalance(email, withdrawAmount);
-                        MessageBox.Show("The amount has been sent to your wallet");
+                        ServerFunctions.DepositBalance(email, depositAmount);
+                        MessageBox.Show("The amount has been credited in");
                         textBox7.Text = ServerFunctions.getBalance(email);
                         textBox10.Text = "";
-                        textBox8.Text = "";
                         textBox9.Text = "";
                     }
                     else
                     {
-                        MessageBox.Show("You don't have enough balance");
+                        MessageBox.Show("Amount must be at least 50");
                     }
                 }
                 catch
                 {
                     MessageBox.Show("Enter a numerical value");
                 }
-                
-                
+
+
 
             }
             else
             {
-                MessageBox.Show("Enter amount, wallet address and network");
+                MessageBox.Show("Enter amount and TrxID");
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            saveButton.Show();
-            button1.Hide();
 
-        }
-
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-
-            button1.Show();
-            saveButton.Hide();
         }
     }
 }

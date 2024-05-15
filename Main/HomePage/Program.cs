@@ -19,11 +19,14 @@ namespace HomePage
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
-            //Form1 LoginPage = new Form1();
-            //LoginPage.ShowDialog();
+            //Form1 loginpage = new Form1();
+            //loginpage.ShowDialog();
 
-            Form2 BrokerPage = new Form2("siddique@GMAIL.com");
-            BrokerPage.ShowDialog();
+            //Form2 BrokerPage = new Form2("zas.zuhaer2@GMAIL.com");
+            //BrokerPage.ShowDialog();
+
+            AdminControl admin = new AdminControl();
+            admin.ShowDialog();
             
         }
     }
